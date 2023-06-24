@@ -1,7 +1,6 @@
 import os
 import json
 from datetime import timezone, datetime, timedelta
-from pystyle import Write,Colors
 import requests
 from time import sleep
 import threading
@@ -13,7 +12,7 @@ def shareao():
             os.system('cls')
         else:
             os.system('clear')
-    ck_fb = Write.Input('Nhập Cookie Cần Đổi Sang Token: ',Colors.blue_to_red,interval=0.0001)
+    ck_fb=input('NHẬP COOKIE CẦN ĐỔI SANG TOKEN: ')
     hed_gettoken = {
         'authority': 'www.instagram.com',
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -32,10 +31,10 @@ def shareao():
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36',
     }
     try:
-        token_fb = requests.get('https://nvlnopro.eu.org/GETTOKEN.php?key=admin_auto_ngu', headers=hed_gettoken).url.split('#access_token=')[1].split('&data_access_expiration_time')[0]
-        Write.Print(f'Token Của Bạn Là: {token_fb}',Colors.blue_to_red,interval=0.0001)
+        token_fb = requests.get('https://www.facebook.com/dialog/oauth?client_id=124024574287414&redirect_uri=https://www.instagram.com/accounts/signup/&&scope=email&response_type=token', headers=hed_gettoken).url.split('#access_token=')[1].split('&data_access_expiration_time')[0]
+        print(f'TOKEN CỦA BẠN LÀ: {token_fb}')
     except:
-        Write.Print("Cookie Lỗi Rồi))",Colors.blue_to_red,interval=0.0001)
+        print("COOKIE LỖI RỒI")
         quit()
     
 shareao()
